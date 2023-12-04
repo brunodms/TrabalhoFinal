@@ -21,7 +21,6 @@ class Jogador {
   public List<Carta> getMao() {
     return mao;
   }
-
   public List<Carta> getMonte() {
     return monte;
   }
@@ -52,27 +51,27 @@ class Jogador {
   }
 
   public int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
-    int maior = 109, menor = 0, linha = -1, D;
-    boolean P = false;
+    int maior = 109, menor = 0, linha = -1, dif;
+    boolean pesca = true;
 
     for (int i = 0; i < 5; i++) {
       Carta ultima = tabuleiro.get(i).getLast();
-      D = jogador.getCartaEscolhida().getValor() - ultima.getValor();
-      if (D > 0) {
-        if (D < maior) {
-          maior = D;
+      dif = jogador.getCartaEscolhida().getValor() - ultima.getValor();
+      if (dif > 0) {
+        if (dif < maior) {
+          maior = dif;
           linha = i;
-          P = true;
+          pesca = false;
         }
-      } else if (D < 0 && P == false) {
-        if (D < menor) {
-          menor = D;
+      } else if (dif < 0 && pesca == false) {
+        if (dif < menor) {
+          menor = dif;
           linha = i;
         }
       }
     }
 
-    if (P == false || tabuleiro.get(linha).size() == 5) {
+    if (pesca == true || tabuleiro.get(linha).size() == 5) {
       pescarLinha(tabuleiro.get(linha), jogador);
       System.out.printf("\n\nLinha %d pescada", linha + 1);
     }

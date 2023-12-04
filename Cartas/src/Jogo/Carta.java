@@ -20,12 +20,23 @@ class Carta {
         if (valor % 10 == 5) {
             pontos++;
         }
-        if (valor % 10 == valor / 10 % 10 && valor != 100) {
-            pontos += 3;
-        }
         if (valor % 10 == 0) {
             pontos += 2;
         }
+        if (temDigitosRepetidos(valor)) {
+            pontos += 4;
+        }
         return pontos;
     }
+    public static boolean temDigitosRepetidos(int number) {
+        String paraString = Integer.toString(number);
+        char digito1 = paraString.charAt(0);
+        for (int i = 1; i < paraString.length(); i++) {
+            if (paraString.charAt(i) != digito1) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }
