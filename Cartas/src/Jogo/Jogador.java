@@ -51,6 +51,7 @@ class Jogador {
   }
 
   public int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
+    mao.remove(jogador.getCartaEscolhida());
     int maior = 109, menor = 0, linha = -1, dif;
     boolean pesca = true;
 
