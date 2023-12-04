@@ -63,7 +63,7 @@ public class Main {
                         System.out.println("Carta escolhida não está na mão do jogador. Escolha novamente.");
                     }
                 } while (!jogador.validarCartaEscolhida(carta));
-                jogador.setCartaEscolhida(carta);
+                jogador.setCartaEscolhida(new Carta(carta));
             }
             // Passo 5e:
             Collections.sort(jogadores, new JogadorComp());
@@ -72,7 +72,8 @@ public class Main {
             }
             // Passo 5f:
             for (Jogador jogador : jogadores) {
-                Jogador.jogarCarta(jogador, tabuleiro);
+                int linha = jogador.jogarCarta(jogador, tabuleiro);
+                tabuleiro.get(linha).addLast(jogador.getCartaEscolhida());
             }
             // Passo 5g: Mostrar tabuleiro e pontos
             printTabuleiro(tabuleiro);

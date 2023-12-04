@@ -8,7 +8,7 @@ class Jogador {
   private List<Carta> mao = new ArrayList<>();
   private List<Carta> monte = new ArrayList<>();
   private int pontos;
-  private int cartaEscolhida;
+  private Carta cartaEscolhida;
 
   public Jogador(String nome) {
     this.nome = nome;
@@ -25,9 +25,11 @@ class Jogador {
   public List<Carta> getMonte() {
     return monte;
   }
-  public int getPontuacao(){
+
+  public int getPontuacao() {
     return pontos;
   }
+
   public boolean validarCartaEscolhida(int carta) {
     for (Carta c : mao) {
       if (c.getValor() == carta) {
@@ -37,44 +39,45 @@ class Jogador {
     return false;
   }
 
-  public int getCartaEscolhida() {
+  public Carta getCartaEscolhida() {
     return cartaEscolhida;
   }
 
-  public void setCartaEscolhida(int cartaEscolhida) {
+  public void setCartaEscolhida(Carta cartaEscolhida) {
     this.cartaEscolhida = cartaEscolhida;
+    mao.remove(cartaEscolhida);
   }
 
   public void adicionarCarta(Carta carta) {
     mao.add(carta);
   }
 
-  public static int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
-    int MDP = 109, MDN = 0, L = -1, D;
+  public int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
+    int maior = 109, menor = 0, linha = -1, D;
     boolean P = false;
 
     for (int i = 0; i < 5; i++) {
       Carta ultima = tabuleiro.get(i).getLast();
-      D = jogador.getCartaEscolhida() - ultima.getValor();
+      D = jogador.getCartaEscolhida().getValor() - ultima.getValor();
       if (D > 0) {
-        if (D < MDP) {
-          MDP = D;
-          L = i;
+        if (D < maior) {
+          maior = D;
+          linha = i;
           P = true;
         }
       } else if (D < 0 && P == false) {
-        if (D < MDN) {
-          MDN = D;
-          L = i;
+        if (D < menor) {
+          menor = D;
+          linha = i;
         }
       }
     }
 
-    if (P == false || tabuleiro.get(L).size() == 5) {
-      pescarLinha(tabuleiro.get(L), jogador);
-      System.out.printf("\n\n---LINHA %d PESCADA---", L + 1);
+    if (P == false || tabuleiro.get(linha).size() == 5) {
+      pescarLinha(tabuleiro.get(linha), jogador);
+      System.out.printf("\n\nLinha %d pescada", linha + 1);
     }
-    return L;
+    return linha;
   }
 
   public static void pescarLinha(LinkedList<Carta> linha, Jogador jogador) {
@@ -88,6 +91,6 @@ class Jogador {
 class JogadorComp implements java.util.Comparator<Jogador> {
   @Override
   public int compare(Jogador a, Jogador b) {
-    return a.getCartaEscolhida() - b.getCartaEscolhida();
+    return a.getCartaEscolhida().getValor() - b.getCartaEscolhida().getValor();
   }
 }
