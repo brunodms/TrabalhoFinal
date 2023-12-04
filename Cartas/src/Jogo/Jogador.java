@@ -45,7 +45,6 @@ class Jogador {
 
   public void setCartaEscolhida(Carta cartaEscolhida) {
     this.cartaEscolhida = cartaEscolhida;
-    mao.remove(cartaEscolhida);
   }
 
   public void adicionarCarta(Carta carta) {
