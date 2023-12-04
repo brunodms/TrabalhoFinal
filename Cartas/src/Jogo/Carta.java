@@ -1,17 +1,17 @@
 package Jogo;
 
 class Carta {
-    private int valor;
+  private int valor;
 
-    public Carta(int valor) {
-        this.valor = valor;
-    }
+  public Carta(int valor) {
+    this.valor = valor;
+  }
 
-    public int getValor() {
-        return valor;
-    }
+  public int getValor() {
+    return valor;
+  }
 
-    public String toString() {
-        return String.format("%3d", valor);
-    }
+  public String toString() {
+    return String.format("%3d", valor);
+  }
 }
