@@ -4,18 +4,16 @@ import java.util.*;
 
 public class Main {
     private static final int NUM_CARTAS = 109;
-    private static final int NUM_LINHAS = 5;
-    private static final int NUM_COLUNAS = 5;
     private static final int NUM_RODADAS = 12;
-    private static List<Integer> baralho = new ArrayList<>();
+    private static List<Carta> baralho = new ArrayList<>();
     private static List<Jogador> jogadores = new ArrayList<>();
-    private static ArrayList<LinkedList<Carta>> tabuleiro = new ArrayList<>();
+    private static ArrayList<LinkedList<Carta>> tabuleiro = new ArrayList<LinkedList<Carta>>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // Passo 2: Inicializar o baralho
         for (int i = 1; i <= NUM_CARTAS; i++) {
-            baralho.add(i);
+            baralho.add(new Carta(i));
         }
         Collections.shuffle(baralho);
         // Passo 3: Inicializar jogadores
@@ -35,11 +33,9 @@ public class Main {
             jogadores.add(new Jogador(nome));
         }
         // Passo 4: Inicializar tabuleiro
-        for (int i = 0; i < NUM_LINHAS; i++) {
+        for (int i = 0; i < 5; i++) {
             tabuleiro.add(new LinkedList<Carta>());
-            for (int j = 0; j < 1; j++) {
-                tabuleiro.get(i).add(null);
-            }
+            tabuleiro.get(i).add(baralho.remove(baralho.size() - 1));
         }
         // Passo 5b: Distribuir cartas
         for (Jogador jogador : jogadores) {
@@ -47,13 +43,8 @@ public class Main {
                 jogador.adicionarCarta(baralho.remove(0));
             }
         }
-        // Passo 5c: Colocar cartas iniciais no tabuleiro
-        for (int i = 0; i < NUM_LINHAS; i++) {
-            if (tabuleiro.get(i).get(0) == null) {
-                tabuleiro.get(i).set(0, new Carta(baralho.remove(0)));
-            }
-        }
         printTabuleiro(tabuleiro);
+        System.out.println("");
         // Passo 5: Jogar rodadas
         for (int r = 1; r <= NUM_RODADAS; r++) {
             System.out.println("Rodada " + r);
@@ -85,6 +76,7 @@ public class Main {
             }
             // Passo 5g: Mostrar tabuleiro e pontos
             printTabuleiro(tabuleiro);
+            System.out.println("");
             for (Jogador jogador : jogadores) {
                 System.out.println("Pontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             }
@@ -106,14 +98,14 @@ public class Main {
         System.out.println("Vencedor: " + vencedor.getNome());
         scanner.close();
     }
+
     private static void printTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
         System.out.println("\nTabuleiro atual:");
         for (LinkedList<Carta> linha : tabuleiro) {
             for (Carta carta : linha) {
                 System.out.printf("[%3d] ", carta.getValor());
             }
+            System.out.println("");
         }
     }
 }
-
-    

@@ -6,7 +6,7 @@ class Carta {
     public Carta(int valor) {
         this.valor = valor;
     }
-
+    
     public int getValor() {
         return valor;
     }

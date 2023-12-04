@@ -5,7 +5,7 @@ import java.util.*;
 class Jogador {
 
   private String nome;
-  private List<Integer> mao = new ArrayList<>();
+  private List<Carta> mao = new ArrayList<>();
   private List<Carta> monte = new ArrayList<>();
   private int pontos;
   private int cartaEscolhida;
@@ -18,7 +18,7 @@ class Jogador {
     return nome;
   }
 
-  public List<Integer> getMao() {
+  public List<Carta> getMao() {
     return mao;
   }
 
@@ -29,7 +29,12 @@ class Jogador {
     return pontos;
   }
   public boolean validarCartaEscolhida(int carta) {
-    return mao.contains(carta);
+    for (Carta c : mao) {
+      if (c.getValor() == carta) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public int getCartaEscolhida() {
@@ -40,7 +45,7 @@ class Jogador {
     this.cartaEscolhida = cartaEscolhida;
   }
 
-  public void adicionarCarta(int carta) {
+  public void adicionarCarta(Carta carta) {
     mao.add(carta);
   }
 
