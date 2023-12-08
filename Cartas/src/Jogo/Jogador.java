@@ -81,7 +81,7 @@ class Jogador {
 
   public static void pescarLinha(LinkedList<Carta> linha, Jogador jogador) {
     while (!linha.isEmpty()) {
-      jogador.pontos += linha.getLast().getPontosDaCarta();
+      jogador.pontos += linha.getLast().getPontos();
       jogador.monte.add(linha.removeLast());
     }
   }

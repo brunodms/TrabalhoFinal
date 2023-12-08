@@ -68,7 +68,7 @@ public class Main {
             // Passo 5e:
             Collections.sort(jogadores, new JogadorComp());
             for (Jogador jogador : jogadores) {
-                System.out.println(jogador.getNome() + ": " + jogador.getCartaEscolhida());
+                System.out.println("Jogador " + jogador.getNome() + ": " + jogador.getCartaEscolhida() + " pontos da carta: " + jogador.getCartaEscolhida().getPontos());
             }
             // Passo 5f:
             for (Jogador jogador : jogadores) {

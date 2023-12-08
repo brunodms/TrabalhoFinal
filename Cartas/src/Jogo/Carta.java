@@ -2,13 +2,19 @@ package Jogo;
 
 class Carta {
     private int valor;
+    private int pontos;
 
     public Carta(int valor) {
         this.valor = valor;
+        this.pontos = getPontosDaCarta();
     }
     
     public int getValor() {
         return valor;
+    }
+
+    public int getPontos() {
+        return pontos;
     }
 
     public String toString() {
@@ -16,7 +22,7 @@ class Carta {
     }
 
     public int getPontosDaCarta() {
-        int pontos = 1;
+        pontos = 1;
         if (valor % 10 == 5) {
             pontos++;
         }
