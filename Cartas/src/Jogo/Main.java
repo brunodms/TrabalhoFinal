@@ -44,18 +44,15 @@ public class Main {
             }
         }
     
-        System.out.println("");
         // Passo 5: Jogar rodadas
         for (int r = 1; r <= NUM_RODADAS; r++) {
-            System.out.println("RODADA " + r);
+            System.out.println("\nRODADA " + r);
             System.out.println("--------------------------------------");
 
             // Passo 5d: Escolher cartas
             for (Jogador jogador : jogadores) {
                 printTabuleiro(tabuleiro);
-                System.out.println("Vez de " + jogador.getNome() + ".");
-                printTabuleiro(tabuleiro);
-                System.out.println();
+                System.out.println("\nVez de " + jogador.getNome());
                 System.out.println("Sua mão: " + jogador.getMao());
                 int carta;
                 do {
@@ -67,7 +64,7 @@ public class Main {
                     }
                 } while (!jogador.validarCartaEscolhida(carta));
                 jogador.setCartaEscolhida(new Carta(carta));
-                System.out.println("\n--------------------------------------\n");
+                System.out.println("\n--------------------------------------");
             }
             // Passo 5e:
             Collections.sort(jogadores, new JogadorComp());
