@@ -64,7 +64,7 @@ class Jogador {
           linha = i;
           pesca = false;
         }
-      } else if (dif < 0 && pesca == false) {
+      } else if (dif < 0 && pesca == true) {
         if (dif < menor) {
           menor = dif;
           linha = i;
@@ -72,7 +72,7 @@ class Jogador {
       }
     }
 
-    if (pesca == true || tabuleiro.get(linha).size() == 5) {
+    if (pesca || tabuleiro.get(linha).size() == 5) {
       pescarLinha(tabuleiro.get(linha), jogador);
       System.out.printf("\n\nLinha %d pescada", linha + 1);
     }
