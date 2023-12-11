@@ -74,7 +74,7 @@ class Jogador {
 
     if (pesca || tabuleiro.get(linha).size() == 5) {
       pescarLinha(tabuleiro.get(linha), jogador);
-      System.out.printf("\n\nLinha %d pescada", linha + 1);
+      System.out.printf("Linha %d pescada\n", linha + 1);
     }
     return linha;
   }
@@ -83,6 +83,9 @@ class Jogador {
     while (!linha.isEmpty()) {
       jogador.pontos += linha.getLast().getPontos();
       jogador.monte.add(linha.removeLast());
+    }
+    if(jogador.pontos > 0){
+      System.out.println(jogador.getNome() + " se deu mal e marcou " + jogador.pontos + " pontos!");
     }
   }
 }

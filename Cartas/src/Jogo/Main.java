@@ -19,10 +19,10 @@ public class Main {
         // Passo 3: Inicializar jogadores
         int numJogadores;
         do {
-            System.out.print("Digite o número de jogadores (3-6): ");
+            System.out.print("\nDigite o número de jogadores (3-6): ");
             numJogadores = scanner.nextInt();
             if (numJogadores < 3 || numJogadores > 6) {
-                System.out.println("Número de jogadores inválido. O número de jogadores deve ser de 3 a 6!");
+                System.out.printf("Número de jogadores inválido. O número de jogadores deve ser de 3 a 6! \n");
             }
         } while (numJogadores < 3 || numJogadores > 6);
 
@@ -43,16 +43,18 @@ public class Main {
                 jogador.adicionarCarta(baralho.remove(0));
             }
         }
-        printTabuleiro(tabuleiro);
+    
         System.out.println("");
         // Passo 5: Jogar rodadas
         for (int r = 1; r <= NUM_RODADAS; r++) {
-            System.out.println("Rodada " + r);
-            System.out.println("----------");
+            System.out.println("RODADA " + r);
+            System.out.println("--------------------------------------");
 
             // Passo 5d: Escolher cartas
             for (Jogador jogador : jogadores) {
                 System.out.println("Vez de " + jogador.getNome() + ".");
+                printTabuleiro(tabuleiro);
+                System.out.println();
                 System.out.println("Sua mão: " + jogador.getMao());
                 int carta;
                 do {
@@ -64,6 +66,7 @@ public class Main {
                     }
                 } while (!jogador.validarCartaEscolhida(carta));
                 jogador.setCartaEscolhida(new Carta(carta));
+                System.out.println("\n--------------------------------------\n");
             }
             // Passo 5e:
             Collections.sort(jogadores, new JogadorComp());
@@ -87,13 +90,13 @@ public class Main {
                 vencedor = jogador;
             }
         }
-        System.out.println("Fim do jogo!");
+        System.out.println("FIM DO JOGO!");
         System.out.println("Pontuações finais:");
         for (Jogador jogador : jogadores) {
             System.out.println("Pontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             System.out.println("Cartas de " + jogador.getNome() + ": " + jogador.getMonte());
         }
-        System.out.println("Vencedor: " + vencedor.getNome());
+        System.out.println("VENCEDOR: " + vencedor.getNome());
         scanner.close();
     }
 
