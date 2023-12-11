@@ -20,7 +20,7 @@ public class Main {
         int numJogadores;
         do {
             System.out.print("\nDigite o número de jogadores (3-6): ");
-            numJogadores = scanner.nextInt();
+            numJogadores = ScannerInt(scanner);
             if (numJogadores < 3 || numJogadores > 6) {
                 System.out.printf("Número de jogadores inválido. O número de jogadores deve ser de 3 a 6! \n");
             }
@@ -51,20 +51,13 @@ public class Main {
 
             // Passo 5d: Escolher cartas
             for (Jogador jogador : jogadores) {
-<<<<<<< Updated upstream
                 printTabuleiro(tabuleiro);
                 System.out.println("\nVez de " + jogador.getNome());
-=======
-                System.out.println("Vez de " + jogador.getNome() + ".");
-                printTabuleiro(tabuleiro);
-                System.out.println();
->>>>>>> Stashed changes
                 System.out.println("Sua mão: " + jogador.getMao());
                 int carta;
                 do {
                     System.out.print("Digite a carta a ser jogada: ");
-                    carta = scanner.nextInt();
-                    scanner.nextLine();
+                    carta = ScannerInt(scanner);
                     if (!jogador.validarCartaEscolhida(carta)) {
                         System.out.println("Carta escolhida não está na mão do jogador. Escolha novamente.");
                     }
@@ -93,18 +86,12 @@ public class Main {
                 vencedor = jogador;
             }
         }
-        System.out.println("FIM DO JOGO!");
+        System.out.println("\n-------------FIM DO JOGO!-------------");
         System.out.println("Pontuações finais:");
         for (Jogador jogador : jogadores) {
-            System.out.println("Pontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
+            System.out.println("\nPontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             System.out.println("Cartas de " + jogador.getNome() + ": " + jogador.getMonte());
         }
-        System.out.println("   *  *  *");
-        System.out.println(" *  *  *  *");
-        System.out.println("* * * * * * *");
-        System.out.println(" *  *  *  *");
-        System.out.println("   *  *  *");
-
         System.out.println("VENCEDOR: " + vencedor.getNome());
         scanner.close();
     }
@@ -125,4 +112,13 @@ public class Main {
             System.out.println("");
         }
     }
+    private static int ScannerInt(Scanner scanner) {
+		try {
+			return Integer.parseInt(scanner.next());
+		} catch (NumberFormatException ex) {
+			System.out.print("Informe um valor inteiro.\n");
+            System.out.print("Digite a carta a ser jogada: ");
+			return ScannerInt(scanner);
+		}
+	}
 }
