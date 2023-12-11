@@ -86,8 +86,30 @@ public class Main {
                 vencedor = jogador;
             }
         }
-            Collections.sort(jogadores, new JogadorCompPontos());
+        Collections.sort(jogadores, new JogadorCompPontos());
         System.out.println("\n-------------FIM DO JOGO!-------------");
+        System.out.println("                    ____ \r\n" + //
+                           "                  .'* *.'\r\n" + //
+                           "               __/_*_*(_\r\n" + //
+                           "              / _______ \\\r\n" + //
+                           "             _\\_)/___\\(_/_ \r\n" + //
+                           "            / _((\\- -/))_ \\\r\n" + //
+                           "            \\ \\())(-)(()/ /\r\n" + //
+                           "             ' \\(((()))/ '\r\n" + //
+                           "            / ' \\)).))/ ' \\\r\n" + //
+                           "           / _ \\ - | - /_  \\\r\n" + //
+                           "          (   ( .;''';. .'  )\r\n" + //
+                           "          _\\\"__ /    )\\ __\"/_\r\n" + //
+                           "            \\/  \\   ' /  \\/\r\n" + //
+                           "             .'  '...' ' )\r\n" + //
+                           "              / /  |  \\ \\\r\n" + //
+                           "             / .   .   . \\\r\n" + //
+                           "            /   .     .   \\\r\n" + //
+                           "           /   /   |   \\   \\\r\n" + //
+                           "         .'   /    b    '.  '.\r\n" + //
+                           "     _.-'    /     Bb     '-. '-._ \r\n" + //
+                           " _.-'       |      BBb       '-.  '-. \r\n" + //
+                           "(________mrf\\____.dBBBb.________)____)");
         System.out.println("\nParabéns " + vencedor.getNome() + "!");
         System.out.println("Você é o mestre do baralho, o mago das cartas!");
         System.out.println("\nPontuações finais:");
