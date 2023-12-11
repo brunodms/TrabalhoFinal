@@ -51,8 +51,14 @@ public class Main {
 
             // Passo 5d: Escolher cartas
             for (Jogador jogador : jogadores) {
+<<<<<<< Updated upstream
                 printTabuleiro(tabuleiro);
                 System.out.println("\nVez de " + jogador.getNome());
+=======
+                System.out.println("Vez de " + jogador.getNome() + ".");
+                printTabuleiro(tabuleiro);
+                System.out.println();
+>>>>>>> Stashed changes
                 System.out.println("Sua mão: " + jogador.getMao());
                 int carta;
                 do {
@@ -93,6 +99,12 @@ public class Main {
             System.out.println("Pontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             System.out.println("Cartas de " + jogador.getNome() + ": " + jogador.getMonte());
         }
+        System.out.println("   *  *  *");
+        System.out.println(" *  *  *  *");
+        System.out.println("* * * * * * *");
+        System.out.println(" *  *  *  *");
+        System.out.println("   *  *  *");
+
         System.out.println("VENCEDOR: " + vencedor.getNome());
         scanner.close();
     }
