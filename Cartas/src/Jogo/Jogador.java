@@ -100,3 +100,10 @@ class JogadorComp implements java.util.Comparator<Jogador> {
     return a.getCartaEscolhida().getValor() - b.getCartaEscolhida().getValor();
   }
 }
+
+class JogadorCompPontos implements java.util.Comparator<Jogador> {
+  @Override
+  public int compare(Jogador a, Jogador b) {
+    return a.getPontuacao() - b.getPontuacao();
+  }
+}

@@ -86,13 +86,15 @@ public class Main {
                 vencedor = jogador;
             }
         }
+            Collections.sort(jogadores, new JogadorCompPontos());
         System.out.println("\n-------------FIM DO JOGO!-------------");
-        System.out.println("Pontuações finais:");
+        System.out.println("\nParabéns " + vencedor.getNome() + "!");
+        System.out.println("Você é o mestre do baralho, o mago das cartas!");
+        System.out.println("\nPontuações finais:");
         for (Jogador jogador : jogadores) {
             System.out.println("\nPontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             System.out.println("Cartas de " + jogador.getNome() + ": " + jogador.getMonte());
         }
-        System.out.println("VENCEDOR: " + vencedor.getNome());
         scanner.close();
     }
 
