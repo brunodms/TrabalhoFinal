@@ -85,7 +85,11 @@ class Jogador {
       jogador.monte.add(linha.removeLast());
     }
     if(jogador.pontos > 0){
-      System.out.println(jogador.getNome() + " se deu mal e marcou " + jogador.pontos + " pontos!");
+      if(jogador.pontos == 1){
+        System.out.println(jogador.getNome() + " se deu mal e marcou " + jogador.pontos + " ponto!");
+      }else{
+        System.out.println(jogador.getNome() + " se deu mal e marcou " + jogador.pontos + " pontos!");
+      }
     }
   }
 }
