@@ -79,7 +79,6 @@ public class Main {
             for (Jogador jogador : jogadores) {
                 System.out.println("Pontuação de " + jogador.getNome() + ": " + jogador.getPontuacao());
             }
-            System.out.println();
         }
         // Passo 5h-i: Calcular vencedor
         Jogador vencedor = null;
