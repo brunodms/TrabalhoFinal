@@ -29,6 +29,14 @@ class Jogador {
     return pontos;
   }
 
+  public Carta getCartaEscolhida() {
+    return cartaEscolhida;
+  }
+
+  public void setCartaEscolhida(Carta cartaEscolhida) {
+    this.cartaEscolhida = cartaEscolhida;
+  }
+
   public boolean validarCartaEscolhida(int carta) {
     for (Carta c : mao) {
       if (c.getValor() == carta) {
@@ -38,21 +46,13 @@ class Jogador {
     return false;
   }
 
-  public Carta getCartaEscolhida() {
-    return cartaEscolhida;
-  }
-
-  public void setCartaEscolhida(Carta cartaEscolhida) {
-    this.cartaEscolhida = cartaEscolhida;
-  }
-
   public void adicionarCarta(Carta carta) {
     mao.add(carta);
   }
 
   public int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
     mao.remove(jogador.getCartaEscolhida());
-    int maior = 109, menor = 0, linha = -1, dif;
+    int  dif, maior = 109, menor = 0, linha = -1;
     boolean pesca = true;
 
     for (int i = 0; i < 5; i++) {

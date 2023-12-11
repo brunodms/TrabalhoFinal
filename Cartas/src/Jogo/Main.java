@@ -52,6 +52,7 @@ public class Main {
 
             // Passo 5d: Escolher cartas
             for (Jogador jogador : jogadores) {
+                printTabuleiro(tabuleiro);
                 System.out.println("Vez de " + jogador.getNome() + ".");
                 printTabuleiro(tabuleiro);
                 System.out.println();
