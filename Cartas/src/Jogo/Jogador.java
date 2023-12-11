@@ -73,13 +73,13 @@ class Jogador {
     }
 
     if (pesca || tabuleiro.get(linha).size() == 5) {
-      pescarLinha(tabuleiro.get(linha), jogador);
-      System.out.printf("Linha %d pescada\n", linha + 1);
+      coletaLinha(tabuleiro.get(linha), jogador);
+      System.out.printf("Linha %d coletada\n", linha + 1);
     }
     return linha;
   }
 
-  public static void pescarLinha(LinkedList<Carta> linha, Jogador jogador) {
+  public static void coletaLinha(LinkedList<Carta> linha, Jogador jogador) {
     while (!linha.isEmpty()) {
       jogador.pontos += linha.getLast().getPontos();
       jogador.monte.add(linha.removeLast());
