@@ -53,7 +53,7 @@ class Jogador {
   public int jogarCarta(Jogador jogador, ArrayList<LinkedList<Carta>> tabuleiro) {
     mao.remove(jogador.getCartaEscolhida());
     int  dif, maior = 109, menor = 0, linha = -1;
-    boolean pesca = true;
+    boolean coleta = true;
 
     for (int i = 0; i < 5; i++) {
       Carta ultima = tabuleiro.get(i).getLast();
@@ -62,9 +62,9 @@ class Jogador {
         if (dif < maior) {
           maior = dif;
           linha = i;
-          pesca = false;
+          coleta = false;
         }
-      } else if (dif < 0 && pesca == true) {
+      } else if (dif < 0 && coleta == true) {
         if (dif < menor) {
           menor = dif;
           linha = i;
@@ -72,7 +72,7 @@ class Jogador {
       }
     }
 
-    if (pesca || tabuleiro.get(linha).size() == 5) {
+    if (coleta || tabuleiro.get(linha).size() == 5) {
       coletaLinha(tabuleiro.get(linha), jogador);
       System.out.printf("Linha %d coletada\n", linha + 1);
     }
