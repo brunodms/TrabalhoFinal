@@ -67,9 +67,6 @@ public class Main {
             }
             // Passo 5e:
             Collections.sort(jogadores, new JogadorComp());
-            for (Jogador jogador : jogadores) {
-                System.out.println("Jogador " + jogador.getNome() + "carta: " + jogador.getCartaEscolhida() + " pontos: " + jogador.getCartaEscolhida().getPontos());
-            }
             // Passo 5f:
             for (Jogador jogador : jogadores) {
                 int linha = jogador.jogarCarta(jogador, tabuleiro);
@@ -102,9 +99,16 @@ public class Main {
 
     private static void printTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
         System.out.println("\nTabuleiro atual:");
-        for (LinkedList<Carta> linha : tabuleiro) {
-            for (Carta carta : linha) {
-                System.out.printf("[%3d] ", carta.getValor());
+    
+        for (int i = 0; i < 5; i++) {
+            LinkedList<Carta> linha = tabuleiro.get(i);
+            for (int j = 0; j < 5; j++) {
+                if (j < linha.size()) {
+                    Carta carta = linha.get(j);
+                    System.out.printf("[%3d] ", carta.getValor());
+                } else {
+                    System.out.printf("[   ] ");
+                }
             }
             System.out.println("");
         }
