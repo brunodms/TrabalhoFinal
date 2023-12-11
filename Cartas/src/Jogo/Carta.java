@@ -49,6 +49,6 @@ class Carta {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Carta outraCarta = (Carta) obj;
-        return this.valor == outraCarta.valor;  // ou outra lógica de comparação
-}
+        return this.valor == outraCarta.valor;
+    }
 }
